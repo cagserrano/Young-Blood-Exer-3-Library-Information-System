@@ -22,6 +22,9 @@ public class User{
 				books.remove(i);
 				break;
 			}
+			else{
+				System.out.println("Book not available.");
+			}
 
 		}
 
