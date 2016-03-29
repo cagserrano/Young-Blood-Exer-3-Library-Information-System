@@ -1,12 +1,12 @@
 public class Book{
-	private String ID;
+	private String id;
 	private String title;
 	private String author;
 	private String year;
 	private String type;
 	
-	public Book(String ID, String title, String author, String year, String type){
-		this.ID=ID;
+	public Book(String id, String title, String author, String year, String type){
+		this.id=id;
 		this.title=title;
 		this.author=author;
 		this.year=year;
@@ -16,7 +16,7 @@ public class Book{
 	
 	
 	public String getId(){
-		return this.ID;
+		return this.id;
 	}
 	
 	public String getTitle(){
