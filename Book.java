@@ -1,8 +1,8 @@
 public class Book{
 	private final int ID;
-	private final String TITLE;
-	private final String AUTHOR;
-	private final int YEAR;
+	private String TITLE;
+	private String AUTHOR;
+	private int YEAR;
 	
 	
 
