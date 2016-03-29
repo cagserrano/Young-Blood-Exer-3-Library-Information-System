@@ -14,9 +14,8 @@ public class User{
 		String bookToBorrow;
 		int i;
 		bookToBorrow = sc.nextLine();
-
 		for(i = 0; i < books.length; i++){
-			if(bookToBorrow == books[i]){
+			if(bookToBorrow.compareToIgnoreCase(books[i].getTitle())==0){
 				System.out.println("Book found!");
 				this.borrowedBooks.add(Book books[i]);
 				books.remove(i);
