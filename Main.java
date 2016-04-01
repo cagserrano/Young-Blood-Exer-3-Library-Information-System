@@ -8,17 +8,20 @@ import java.io.File;
 public class Main{
 	public static void main(String[] args){
 		int choice;
-		Library l = new Libary();
-		user();
+		String name, username, password;
+		name=name();
+		username=username();
+		password=password();
+		User user=new User(name, username, password);
+		Library l = new Library();
+		
 		do{
 			choice = printMenu();
 			switch(choice){
 				case 1:
-					user.borrowBook(l.getBookMap());
-					break;
+					user.borrowBook(l);
 				case 2:
-					user.returnBook(l.getBookMap());
-					break;
+					user.returnBook(l);
 				case 3:
 					l.viewLibraryBooks();
 					break;
@@ -43,19 +46,31 @@ public class Main{
 		choice = sc.nextInt();
 		return choice;
 	}
-	public static void user(){
+	
+	public static String name(){
 		String name;
-		String username;
-		String password;
 		Scanner sc = new Scanner(System.in);
 		Sytem.out.print("Enter Name: ");
 		name=sc.nextLine();
-		Sytem.out.print("Enter Username: ");
+		return name;
+	} 
+	
+	public static String username(){
+		String username;
+		Scanner sc = new Scanner(System.in);
+		Sytem.out.print("Enter Userame: ");
 		username=sc.nextLine();
+		return username;
+	
+	}
+	public static String password(){
+		String password;
+		Scanner sc = new Scanner(System.in);
 		Sytem.out.print("Enter Password: ");
 		password=sc.nextLine();
-		User user=new User(name, username, password);
+		return password;
 	}
+	
 	
 	
 	public static void register(){
