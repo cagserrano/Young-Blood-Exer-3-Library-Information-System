@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
+import java.util.Random;
 
 public class Library{
 	private HashMap<String, ArrayList<Book>> bookMap;
@@ -19,17 +20,22 @@ public class Library{
 	public void loadBooks(){
 		System.out.println("Loading books from CSV file");
 		try{
-			int iD=0;
+			int iD=0, x;
 			String current = null;
+			Random r = new Random();
 			BufferedReader br = new BufferedReader(new FileReader("books.csv"));
 			while((current = br.readLine()) != null){
 				String[] data = current.split(",");
-				Book b= new Book(Integer.toHexString(iD), data[0], data[1], data[2], data[3]);
-				if(bookMap.containsKey(data[0]) != true){
-					bookMap.put(data[0], new ArrayList<Book>());
+				x = r.nextInt(6) + 15;
+				for(int i =0;i<x;i++){
+					Book b= new Book(Integer.toHexString(iD), data[0], data[1], data[2], data[3]);
+					if(bookMap.containsKey(data[0]) != true){
+						bookMap.put(data[0], new ArrayList<Book>());
+					}	
+						
+					bookMap.get(data[0]).add(b);
+					iD += 1;
 				}	
-				bookMap.get(data[0]).add(b);
-				iD += 1;
 			}			
 			br.close();
 			System.out.println("Books Added!");
@@ -65,11 +71,13 @@ public class Library{
 
 	public void viewLibraryBooks(){
 		Iterator booksIterator = bookMap.keySet().iterator();
+		int number, i=1;
 		while(booksIterator.hasNext()){	
 			String current = booksIterator.next().toString();
-			for(int i=0;i<bookMap.get(current).size();i++){		
-				System.out.println(bookMap.get(current).get(i).getTitle());	
-			}
+			number = bookMap.get(current).size();
+			System.out.println("[" + i + "] " + "Title: " + current);
+			System.out.println("Quantity: " + number + "\n");			
+			i += 1; 
 		}
 	}
 
