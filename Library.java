@@ -17,7 +17,7 @@ public class Library{
 			BufferedReader br = new BufferedReader(new FileReader("books.csv"));
 			while((current = br.readLine()) != null){
 				String[] data = current.split(",");
-				Book b= new Book(ID, data[0], data[1], data[2], data[4]);
+				Book b= new Book(Integer.tohexString(ID), data[0], data[1], data[2], data[3]);
 				if(bookMap.containsKey(data[0]) != true){
 					bookMap.put(data[0], new ArrayList<Book>());
 				}	

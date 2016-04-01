@@ -1,3 +1,5 @@
+
+
 import java.util.ArrayList;
 
 public class User{
@@ -13,6 +15,7 @@ public class User{
 		Scanner sc  = new Scanner(System.in);
 		String bookToBorrow;
 		int i;
+		System.out.print("What book do you want to borrow? ");
 		bookToBorrow = sc.nextLine();
 		for(i = 0; i < books.length; i++){
 			if(bookToBorrow.compareToIgnoreCase(books[i].getTitle())==0){
@@ -29,4 +32,7 @@ public class User{
 
 	}
 
+	public void viewBooksBorrowed(ArrayList<Book> borrowedBooks){
+
+	}
 }
