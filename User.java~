@@ -4,13 +4,29 @@ import java.util.ArrayList;
 
 public class User{
 	private String name;
+	private String username;
+	private String password;
 	private ArrayList<Book> borrowedBooks;
 	
-	public User(String name){
+	public User(String name, String username, String password){
 		this.name = name;
+		this.username=username;
+		this.password=password;
 		borrowedBooks = new ArrayList<Book>();
 	}
 
+	public String getName(){
+		return this.name;
+	}
+	
+	public String getUsername(){
+		return this.username;
+	}
+	
+	public String getPassword(){
+		return this.password;
+	}
+	
 	public void borrowBook(ArrayList<Book> books){
 		Scanner sc  = new Scanner(System.in);
 		String bookToBorrow;
@@ -68,7 +84,10 @@ public class User{
 
 	}
 
-	public void viewBooksBorrowed(ArrayList<Book> borrowedBooks){
-
+	public void viewBooksBorrowed(){
+		Iterator booksIterator = borrowedBooks.iterator();
+		while(booksIterator.hasNext()){
+			System.out.println(booksIterator.next().getTitle());
+		}
 	}
 }

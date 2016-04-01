@@ -84,7 +84,7 @@ public class User{
 
 	}
 
-	public void viewBooksBorrowed(ArrayList<Book> borrowedBooks){
+	public void viewBooksBorrowed(){
 		Iterator booksIterator = borrowedBooks.iterator();
 		while(booksIterator.hasNext()){
 			System.out.println(booksIterator.next().getTitle());

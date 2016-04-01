@@ -14,12 +14,13 @@ public class Main{
 			choice = printMenu();
 			switch(choice){
 				case 1:
-					user.borrowBooks();
+					user.borrowBook(l.getBookMap());
 				case 2:
+					user.returnBook(l.getBookMap());
 				case 3:
 					l.viewLibraryBooks();
 				case 4:
-
+					user.viewBooksBorrowed();
 				case 5:
 				default:
 			}
