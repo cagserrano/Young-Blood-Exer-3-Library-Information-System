@@ -13,7 +13,7 @@ public class Main{
 		username=username();
 		password=password();
 		User user=new User(name, username, password);
-		Library l = new Libary();
+		Library l = new Library();
 		
 		do{
 			choice = printMenu();
