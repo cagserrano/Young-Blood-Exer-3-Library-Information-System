@@ -5,6 +5,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.FileNotFoundException;
 
 public class Library{
 	private HashMap<String, ArrayList<Book>> bookMap;
@@ -66,7 +68,7 @@ public class Library{
 		Iterator booksIterator = bookMap.keySet().iterator();
 		while(booksIterator.hasNext() != false){	
 			for(int i=0;i<bookMap.get(booksIterator.next().toString()).size();i++){		
-				System.out.println(bookMap.get(type).get(i).getTitle());	
+				System.out.println(bookMap.get(booksIterator.next().toString()).get(i).getTitle());	
 			}
 		}
 	}
