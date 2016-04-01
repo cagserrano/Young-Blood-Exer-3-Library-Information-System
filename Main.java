@@ -26,4 +26,5 @@ public class Main{
 		choice = sc.nextInt();
 		return choice;
 	}
+	
 }
