@@ -14,7 +14,7 @@ public class Main{
 			choice = printMenu();
 			switch(choice){
 				case 1:
-					user.borrowBooks();
+					user.borrowBook();
 				case 2:
 				case 3:
 					l.viewLibraryBooks();
@@ -48,7 +48,6 @@ public class Main{
 		Sytem.out.print("Enter Password: ");
 		password=sc.nextLine();
 		User user=new User(name, username, password);
-	
 	}
 	
 	
