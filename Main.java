@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.File;
@@ -6,7 +8,8 @@ import java.io.File;
 public class Main{
 	public static void main(String[] args){
 		int choice;
-
+		Library l = new Libary();
+		user();
 		do{
 			choice = printMenu();
 			switch(choice){
@@ -14,7 +17,9 @@ public class Main{
 					user.borrowBooks();
 				case 2:
 				case 3:
+					l.viewLibraryBooks();
 				case 4:
+
 				case 5:
 				default:
 			}
@@ -31,6 +36,22 @@ public class Main{
 		choice = sc.nextInt();
 		return choice;
 	}
+	public static void user(){
+		String name;
+		String username;
+		String password;
+		Scanner sc = new Scanner(System.in);
+		Sytem.out.print("Enter Name: ");
+		name=sc.nextLine();
+		Sytem.out.print("Enter Username: ");
+		username=sc.nextLine();
+		Sytem.out.print("Enter Password: ");
+		password=sc.nextLine();
+		User user=new User(name, username, password);
+	
+	}
+	
+	
 	public static void register(){
 		String username, password;
 		Scanner sc = new Scanner(System.in);
@@ -65,7 +86,7 @@ public class Main{
 				String[] data = current.split(",");
 				if((data[0] == username) && (data[1] == password)){
 					//bookMap.put(data[0], new ArrayList<Book>());
-					
+
 				}	
 				//bookMap.get(data[0]).add(b);
 			}			
@@ -78,3 +99,4 @@ public class Main{
         }
 	}
 }
+
