@@ -122,7 +122,7 @@ public void borrowBook(Library l){
 		try{
 			PrintWriter pw = new PrintWriter(new FileWriter("borrowedBooks.csv"));
 			for(i = 0; i < borrowedBooks.size(); i++){
-				pw.write(borrowedBooks.get(i)getTitle() 
+				pw.write(borrowedBooks.get(i).getTitle() 
 						+ "," + borrowedBooksborrowedBooks.get(current).get(i).getAuthor()
 						+ "," + borrowedBooks.get(i).getYear()
 						+ "," + borrowedBooks.get(i).getType()
