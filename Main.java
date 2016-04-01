@@ -4,6 +4,8 @@ import java.io.FileReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Main{
 	public static void main(String[] args){
@@ -20,13 +22,19 @@ public class Main{
 			switch(choice){
 				case 1:
 					user.borrowBook(l);
+					break;
 				case 2:
 					user.returnBook(l);
+					break;
 				case 3:
 					l.viewLibraryBooks();
+					break;
 				case 4:
 					user.viewBooksBorrowed();
+					break;
 				case 5:
+					System.out.println("Thank you!");
+					break;
 				default:
 			}
 		}while(choice != 5);
@@ -69,7 +77,7 @@ public class Main{
 	
 	
 	
-	public static void register(){
+	/*public static void register(){
 		String username, password;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("===Register===");
@@ -114,6 +122,6 @@ public class Main{
 		}catch(IOException e){
             System.out.println(e.toString());
         }
-	}
+	}*/
 }
 
