@@ -49,6 +49,7 @@ public class Main{
 		Sytem.out.print("Enter Password: ");
 		password=sc.nextLine();
 		User user=new User(name, username, password);
+	
 	}
 	
 	
