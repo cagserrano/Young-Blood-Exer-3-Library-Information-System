@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.util.Random;
-
+import java.util.Scanner;
 public class User{
 	private String name;
 	private String username;
@@ -142,9 +142,10 @@ public void borrowBook(Library l){
 
 	public void loadBorrowedBooks(){
 		try{
+
 			BufferedReader br = new BufferedReader(new FileReader("borrowedBooks.csv"));
 			String current = null;
-			while(current = br.readLine() != null){
+			while((current = br.readLine()) != null){
 				String[] data = current.split(",");
 				Book b = new Book(data[4],data[0],data[1],data[2],data[3]);
 				this.borrowedBooks.add(b);
