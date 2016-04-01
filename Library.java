@@ -25,9 +25,6 @@ public class Library{
 			while((current = br.readLine()) != null){
 				String[] data = current.split(",");
 				Book b= new Book(Integer.toHexString(iD), data[0], data[1], data[2], data[3]);
-				if(data[4] != null){
-					b.setId(data[4]);
-				}
 				if(bookMap.containsKey(data[0]) != true){
 					bookMap.put(data[0], new ArrayList<Book>());
 				}	
@@ -69,8 +66,9 @@ public class Library{
 	public void viewLibraryBooks(){
 		Iterator booksIterator = bookMap.keySet().iterator();
 		while(booksIterator.hasNext()){	
-			for(int i=0;i<bookMap.get(booksIterator.next().toString()).size();i++){		
-				System.out.println(bookMap.get(booksIterator.next().toString()).get(i).getTitle());	
+			String current = booksIterator.next().toString();
+			for(int i=0;i<bookMap.get(current).size();i++){		
+				System.out.println(bookMap.get(current).get(i).getTitle());	
 			}
 		}
 	}
