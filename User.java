@@ -1,7 +1,15 @@
 
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.Iterator;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.File;
+import java.io.IOException;
 public class User{
 	private String name;
 	private String username;
@@ -28,7 +36,7 @@ public class User{
 	}
 	
 
-public void borrowBook(HashMap<String,ArrayList<Book>> book){
+public void borrowBook(Library l){
 		Scanner sc  = new Scanner(System.in);
 		String bookToBorrow;
 		int i;
@@ -36,22 +44,23 @@ public void borrowBook(HashMap<String,ArrayList<Book>> book){
 		System.out.print("What book do you want to borrow? ");
 		bookToBorrow = sc.nextLine();
 		Iterator bookItr; 
-		if(book.contains(bookToBorrow)){
+		HashMap<String, ArrayList<Book>> book = l.getBookMap();
+		if(book.containsKey(bookToBorrow)){
 			System.out.println("Book found!");
 			ArrayList<Book> b = book.get(bookToBorrow);
 			for(i = 0; i < b.size(); i++){
 				System.out.println(i + 
 					" Title: " + b.get(i).getTitle() + 
 					" Author: " + b.get(i).getAuthor() + 
-					" Year: " + b.get(i).getYear()) +
-					" ID: " + b.get(i).getID());
+					" Year: " + b.get(i).getYear() +
+					" ID: " + b.get(i).getId());
 
 
 				}
 			System.out.println("Enter choice: ");
 			i = sc.nextInt();
 			a = b.get(i);
-			book.removeBook(a);
+			l.removeBook(a);
 			this.borrowedBooks.add(a);
 			}
 			else{
@@ -64,30 +73,40 @@ public void borrowBook(HashMap<String,ArrayList<Book>> book){
 
 
 
-	public void returnBook(HashMap<String,ArrayList<Books>> book){
+	public void returnBook(Library l){
 		String bookToReturn;
 		int i;
 		Iterator bookItr;
+		Scanner sc = new Scanner(System.in);
+
+		HashMap<String, ArrayList<Book>> book = l.getBookMap();
 		for(i = 0; i < this.borrowedBooks.size(); i++){
 			System.out.println(i +
 			" Title: " + borrowedBooks.get(i).getTitle() + 
 			" Author: " + borrowedBooks.get(i).getAuthor() + 
-			" Year: " + borrowedBooks.get(i).getYear()) +
-			" ID: " + borrowedBooks.get(i).getID());
+			" Year: " + borrowedBooks.get(i).getYear() +
+			" ID: " + borrowedBooks.get(i).getId());
 		}
 		
 		System.out.println("Enter choice: ");
 		i = sc.nextInt();
 		Book a = borrowedBooks.get(i);
 		this.borrowedBooks.remove(i);
-		book.addBook(a);
+		l.addBook(a);
 
 
-
+	}
 	public void viewBooksBorrowed(){
-		Iterator booksIterator = borrowedBooks.iterator();
-		while(booksIterator.hasNext()){
-			System.out.println(booksIterator.next().getTitle());
+		int i;
+		for(i = 0; i < borrowedBooks.size(); i++){
+			System.out.println(i +
+			" Title: " + borrowedBooks.get(i).getTitle() + 
+			" Author: " + borrowedBooks.get(i).getAuthor() + 
+			" Year: " + borrowedBooks.get(i).getYear() +
+			" ID: " + borrowedBooks.get(i).getId());
+
 		}
 
 	}
+
+}
