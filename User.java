@@ -80,7 +80,8 @@ public void borrowBook(Library l){
 		Scanner sc = new Scanner(System.in);
 
 		HashMap<String, ArrayList<Book>> book = l.getBookMap();
-		for(i = 0; i < this.borrowedBooks.size(); i++){
+		if(borrowedBooks.isEmpty()!=true){
+			for(i = 0; i < this.borrowedBooks.size(); i++){
 			System.out.println(i +
 			" Title: " + borrowedBooks.get(i).getTitle() + 
 			" Author: " + borrowedBooks.get(i).getAuthor() + 
@@ -93,7 +94,12 @@ public void borrowBook(Library l){
 		Book a = borrowedBooks.get(i);
 		this.borrowedBooks.remove(i);
 		l.addBook(a);
+		}
+		else{
+			System.out.println("No Borrowed Books");
 
+
+		}
 
 	}
 	public void viewBooksBorrowed(){
@@ -109,10 +115,26 @@ public void borrowBook(Library l){
 
 	}
 
-}
 
-	/*public void saveBorrowedBooks(){
 
+	public void saveBorrowedBooks(){
+		int i;
+		try{
+			PrintWriter pw = new PrintWriter(new FileWriter("borrowedBooks.csv"));
+			for(i = 0; i < borrowedBooks.size(); i++){
+				pw.write(borrowedBooks.get(i).getTitle() 
+						+ "," + borrowedBooksborrowedBooks.get(current).get(i).getAuthor()
+						+ "," + borrowedBooks.get(i).getYear()
+						+ "," + borrowedBooks.get(i).getType()
+						+ "," + borrowedBooks.get(i).getId());
+					pw.write("\n");
+			}
+			pw.close();
+
+
+		}catch(IOException e){
+			System.out.println(e.toString());
+		}
 
 
 
@@ -120,8 +142,21 @@ public void borrowBook(Library l){
 
 
 	public void loadBorrowedBooks(){
+		try{
+			BufferedReader br = new BufferedReader(new FileReader("borrowedBooks.csv"));
+			String current = null;
+			while(current = br.readLine() != null){
+				String[] data = current.split(",");
+				Book b = new Book(data[4],data[0],data[1],data[2],data[3]);
+				this.borrowedBooks.add(b);
+			}
+			br.close();
 
 
 
-	}*/
+
+		}
+
+
+	}
 
