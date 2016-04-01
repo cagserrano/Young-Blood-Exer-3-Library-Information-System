@@ -68,7 +68,7 @@ public class Library{
 
 	public void viewLibraryBooks(){
 		Iterator booksIterator = bookMap.keySet().iterator();
-		while(booksIterator.hasNext() != false){	
+		while(booksIterator.hasNext()){	
 			for(int i=0;i<bookMap.get(booksIterator.next().toString()).size();i++){		
 				System.out.println(bookMap.get(booksIterator.next().toString()).get(i).getTitle());	
 			}

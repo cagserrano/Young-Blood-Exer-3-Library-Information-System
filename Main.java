@@ -4,8 +4,8 @@ import java.io.FileReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.File;
-import java.io.IOException;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Main{
 	public static void main(String[] args){
@@ -33,6 +33,7 @@ public class Main{
 					user.viewBooksBorrowed();
 					break;
 				case 5:
+					System.out.println("Thank you!");
 					break;
 				default:
 					System.out.println("Invalid choice.");
@@ -62,7 +63,7 @@ public class Main{
 	public static String username(){
 		String username;
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Enter Userame: ");
+		System.out.print("Enter Username: ");
 		username=sc.nextLine();
 		return username;
 	
@@ -77,7 +78,7 @@ public class Main{
 	
 	
 	
-	public static void register(){
+	/*public static void register(){
 		String username, password;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("===Register===");
@@ -88,7 +89,11 @@ public class Main{
 		try{
 			File file = new File("accounts.csv");
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+<<<<<<< HEAD
 			//writer.writeline(username+","+password);
+=======
+			writer.writeline(username + "," + password);
+>>>>>>> c4ee57904956e7bbc11d494630be686a35d0a920
 			writer.close();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -122,6 +127,6 @@ public class Main{
 		}catch(IOException e){
             System.out.println(e.toString());
         }
-	}
+	}*/
 }
 
