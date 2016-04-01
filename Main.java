@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.File;
@@ -34,6 +36,22 @@ public class Main{
 		choice = sc.nextInt();
 		return choice;
 	}
+	public static void user(){
+		String name;
+		String username;
+		String password;
+		Scanner sc = new Scanner(System.in);
+		Sytem.out.print("Enter Name: ");
+		name=sc.nextLine();
+		Sytem.out.print("Enter Username: ");
+		username=sc.nextLine();
+		Sytem.out.print("Enter Password: ");
+		password=sc.nextLine();
+		User user=new User(name, username, password);
+	
+	}
+	
+	
 	public static void register(){
 		String username, password;
 		Scanner sc = new Scanner(System.in);
@@ -80,4 +98,7 @@ public class Main{
             System.out.println(e.toString());
         }
 	}
+	
+	
+	
 }
