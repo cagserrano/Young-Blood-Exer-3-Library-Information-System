@@ -4,6 +4,8 @@ import java.io.FileReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.File;
+import java.io.IOException;
+import java.io.FileNotFoundException;
 
 public class Main{
 	public static void main(String[] args){
@@ -20,8 +22,10 @@ public class Main{
 			switch(choice){
 				case 1:
 					user.borrowBook(l);
+					break;
 				case 2:
 					user.returnBook(l);
+					break;
 				case 3:
 					l.viewLibraryBooks();
 					break;
@@ -50,7 +54,7 @@ public class Main{
 	public static String name(){
 		String name;
 		Scanner sc = new Scanner(System.in);
-		Sytem.out.print("Enter Name: ");
+		System.out.print("Enter Name: ");
 		name=sc.nextLine();
 		return name;
 	} 
@@ -58,7 +62,7 @@ public class Main{
 	public static String username(){
 		String username;
 		Scanner sc = new Scanner(System.in);
-		Sytem.out.print("Enter Userame: ");
+		System.out.print("Enter Userame: ");
 		username=sc.nextLine();
 		return username;
 	
@@ -66,7 +70,7 @@ public class Main{
 	public static String password(){
 		String password;
 		Scanner sc = new Scanner(System.in);
-		Sytem.out.print("Enter Password: ");
+		System.out.print("Enter Password: ");
 		password=sc.nextLine();
 		return password;
 	}
@@ -84,7 +88,7 @@ public class Main{
 		try{
 			File file = new File("accounts.csv");
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
-			writer.writeline(username+","+password);
+			//writer.writeline(username+","+password);
 			writer.close();
 		}catch(Exception e){
 			e.printStackTrace();
