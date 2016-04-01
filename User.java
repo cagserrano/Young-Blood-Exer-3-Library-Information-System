@@ -47,7 +47,7 @@ public void borrowBook(Library l){
 			System.out.println("Book found!");
 			ArrayList<Book> b = book.get(bookToBorrow);
 			for(i = 0; i < b.size(); i++){
-				System.out.println(i + 
+				System.out.println("[" + i + "]" + 
 					" Title: " + b.get(i).getTitle() + 
 					" Author: " + b.get(i).getAuthor() + 
 					" Year: " + b.get(i).getYear() +
@@ -87,7 +87,7 @@ public void borrowBook(Library l){
 		}
 		
 		System.out.println("Enter choice: ");
-		i = sc.nextInt();
+		i = sc.nextInt();	
 		Book a = borrowedBooks.get(i);
 		this.borrowedBooks.remove(i);
 		l.addBook(a);
@@ -108,5 +108,21 @@ public void borrowBook(Library l){
 	}
 }
 
+<<<<<<< HEAD
 	
+=======
+	/*public void saveBorrowedBooks(){
+
+
+
+
+	}
+
+
+	public void loadBorrowedBooks(){
+
+
+
+	}*/
+>>>>>>> 6540679318741a427789b69bdec192e7991274a4
 
