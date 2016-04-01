@@ -22,7 +22,7 @@ public class Library{
 			BufferedReader br = new BufferedReader(new FileReader("books.csv"));
 			while((current = br.readLine()) != null){
 				String[] data = current.split(",");
-				Book b= new Book(Integer.toHexString(ID), data[0], data[1], data[2], data[3]);
+				Book b= new Book(Integer.toHexString(iD), data[0], data[1], data[2], data[3]);
 				if(data[4] != null){
 					b.setId(data[4]);
 				}
