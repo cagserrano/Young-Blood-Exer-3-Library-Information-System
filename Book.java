@@ -33,7 +33,7 @@ public class Book{
 	}
 	
 	public void setId(String iD){
-		this.iD = iD;
+		this.id = iD;
 	}
 	
 	
