@@ -27,67 +27,67 @@ public class User{
 		return this.password;
 	}
 	
-	public void borrowBook(ArrayList<Book> books){
+
+public void borrowBook(HashMap<String,ArrayList<Book>> book){
 		Scanner sc  = new Scanner(System.in);
 		String bookToBorrow;
 		int i;
+		Book a;
 		System.out.print("What book do you want to borrow? ");
 		bookToBorrow = sc.nextLine();
-		ListIterator bookItr = books.iterator();
-		while(bookItr.hasNext()){
-			Book a = bookItr.next();
-			if(bookToBorrow.compareToIgnoreCase(a.getTitle())==0){
-				System.out.println("Book found!");
-				this.borrowedBooks.add(a);
-				books.remove(a);
-				break;
+		Iterator bookItr; 
+		if(book.contains(bookToBorrow)){
+			System.out.println("Book found!");
+			ArrayList<Book> b = book.get(bookToBorrow);
+			for(i = 0; i < b.size(); i++){
+				System.out.println(i + 
+					" Title: " + b.get(i).getTitle() + 
+					" Author: " + b.get(i).getAuthor() + 
+					" Year: " + b.get(i).getYear()) +
+					" ID: " + b.get(i).getID());
+
+
+				}
+			System.out.println("Enter choice: ");
+			i = sc.nextInt();
+			a = b.get(i);
+			book.removeBook(a);
+			this.borrowedBooks.add(a);
 			}
 			else{
 				System.out.println("Book not available.");
 			}
 
-		}
+		
 
 	}
 
 
 
-	public void returnBook(ArrayList<Book> books, Book book){
+	public void returnBook(HashMap<String,ArrayList<Books>> book){
 		String bookToReturn;
 		int i;
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter title of book to return: ");
-		bookTorReturn = sc.nextLine();
-		ListIterator bookItr = this.borrowedBooks.iterator();
-		while(bookItr.hasNext()){
-			Book a = bookItr.next();
-			System.out.println("Title: " + a.getTitle());
-			if(bookToReturn.compareToIgnoreCase(a.getTitle())==0){
-				System.out.println("Book found!");
-				for(i = 0; i < borrowedBooks.size(); i++){
-					if(a.getName().compareToIgnoreCase(borrowedBooks.get(i).getTitle()) == 0){
-						books.add(a);
-						borrowedBooks.remove(i);
-						break;
-					}
-
-				}
-
-				break;
-
-			}
-
-
-
+		Iterator bookItr;
+		for(i = 0; i < this.borrowedBooks.size(); i++){
+			System.out.println(i +
+			" Title: " + borrowedBooks.get(i).getTitle() + 
+			" Author: " + borrowedBooks.get(i).getAuthor() + 
+			" Year: " + borrowedBooks.get(i).getYear()) +
+			" ID: " + borrowedBooks.get(i).getID());
 		}
+		
+		System.out.println("Enter choice: ");
+		i = sc.nextInt();
+		Book a = borrowedBooks.get(i);
+		this.borrowedBooks.remove(i);
+		book.addBook(a);
 
 
-	}
 
 	public void viewBooksBorrowed(){
 		Iterator booksIterator = borrowedBooks.iterator();
 		while(booksIterator.hasNext()){
 			System.out.println(booksIterator.next().getTitle());
 		}
+
 	}
-}

@@ -14,9 +14,9 @@ public class Main{
 			choice = printMenu();
 			switch(choice){
 				case 1:
-					user.borrowBook(l.getBookMap());
+					user.borrowBook(l);
 				case 2:
-					user.returnBook(l.getBookMap());
+					user.returnBook(l);
 				case 3:
 					l.viewLibraryBooks();
 				case 4:
