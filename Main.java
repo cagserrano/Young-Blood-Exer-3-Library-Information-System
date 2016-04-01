@@ -16,7 +16,7 @@ public class Main{
 		password=password();
 		User user=new User(name, username, password);
 		Library l = new Library();
-		
+		l.loadBooks();
 		do{
 			choice = printMenu();
 			switch(choice){
@@ -33,6 +33,7 @@ public class Main{
 					user.viewBooksBorrowed();
 					break;
 				case 5:
+					l.saveBooks();
 					System.out.println("Thank you!");
 					break;
 				default:
