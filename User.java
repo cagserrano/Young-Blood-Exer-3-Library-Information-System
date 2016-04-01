@@ -1,3 +1,5 @@
+
+
 import java.util.ArrayList;
 
 public class User{
@@ -13,6 +15,7 @@ public class User{
 		Scanner sc  = new Scanner(System.in);
 		String bookToBorrow;
 		int i;
+		System.out.print("What book do you want to borrow? ");
 		bookToBorrow = sc.nextLine();
 		ListIterator bookItr = books.iterator();
 		while(bookItr.hasNext()){
@@ -30,6 +33,7 @@ public class User{
 		}
 
 	}
+
 
 
 	public void returnBook(ArrayList<Book> books, Book book){
@@ -64,4 +68,7 @@ public class User{
 
 	}
 
+	public void viewBooksBorrowed(ArrayList<Book> borrowedBooks){
+
+	}
 }
