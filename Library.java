@@ -21,7 +21,8 @@ public class Library{
 				if(bookMap.containsKey(data[0]) != true){
 					bookMap.put(data[0], new ArrayList<Book>());
 				}	
-				bookMap.get(data[0]).add(b);			
+				bookMap.get(data[0]).add(b);
+			}			
 			br.close();
 			System.out.println("Books Added!");
 		}catch(FileNotFoundException e){
@@ -29,5 +30,10 @@ public class Library{
 		}catch(IOException e){
             System.out.println(e.toString());
         }
+	}
+
+	public void saveBooks(){
+
+
 	}
 }
