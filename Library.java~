@@ -48,13 +48,15 @@ public class Library{
 			PrintWriter pw = new PrintWriter(new FileWriter("books.csv"));	
 			Iterator bookIterator = bookMap.keySet().iterator();
 			while(bookIterator.hasNext() != false){
-				String current = bookIterator.next().getTitle();
-				pw.write(bookMap.get(current).getTitle() 
-					+ "," + bookMap.get(current).getAuthor()
-					+ "," + bookMap.get(current).getYear()
-					+ "," + bookMap.get(current).getType()
-					+ "," + bookMap.get(current).getId());
-				pw.write("\n");
+				String current = bookIterator.next().toString();
+				for(int i=0;i<bookMap.get(current).size();i++){	
+					pw.write(bookMap.get(current).get(i).getTitle() 
+						+ "," + bookMap.get(current).get(i).getAuthor()
+						+ "," + bookMap.get(current).get(i).getYear()
+						+ "," + bookMap.get(current).get(i).getType()
+						+ "," + bookMap.get(current).get(i).getId());
+					pw.write("\n");
+				}
 			}	
 			pw.close();
 			System.out.println("Done!");
