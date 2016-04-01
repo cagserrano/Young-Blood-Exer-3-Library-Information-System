@@ -6,7 +6,8 @@ import java.io.File;
 public class Main{
 	public static void main(String[] args){
 		int choice;
-
+		Library l = new Libary();
+		user();
 		do{
 			choice = printMenu();
 			switch(choice){
@@ -14,7 +15,9 @@ public class Main{
 					user.borrowBooks();
 				case 2:
 				case 3:
+					l.viewLibraryBooks();
 				case 4:
+
 				case 5:
 				default:
 			}
@@ -65,7 +68,7 @@ public class Main{
 				String[] data = current.split(",");
 				if((data[0] == username) && (data[1] == password)){
 					//bookMap.put(data[0], new ArrayList<Book>());
-					
+
 				}	
 				//bookMap.get(data[0]).add(b);
 			}			
