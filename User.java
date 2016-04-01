@@ -14,11 +14,13 @@ public class User{
 		String bookToBorrow;
 		int i;
 		bookToBorrow = sc.nextLine();
-		for(i = 0; i < books.length; i++){
-			if(bookToBorrow.compareToIgnoreCase(books[i].getTitle())==0){
+		ListIterator bookItr = books.iterator();
+		while(bookItr.hasNext()){
+			Book a = bookItr.next();
+			if(bookToBorrow.compareToIgnoreCase(a.getTitle())==0){
 				System.out.println("Book found!");
-				this.borrowedBooks.add(Book books[i]);
-				books.remove(i);
+				this.borrowedBooks.add(a);
+				books.remove(a);
 				break;
 			}
 			else{
@@ -26,6 +28,39 @@ public class User{
 			}
 
 		}
+
+	}
+
+
+	public void returnBook(ArrayList<Book> books, Book book){
+		String bookToReturn;
+		int i;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter title of book to return: ");
+		bookTorReturn = sc.nextLine();
+		ListIterator bookItr = this.borrowedBooks.iterator();
+		while(bookItr.hasNext()){
+			Book a = bookItr.next();
+			System.out.println("Title: " + a.getTitle());
+			if(bookToReturn.compareToIgnoreCase(a.getTitle())==0){
+				System.out.println("Book found!");
+				for(i = 0; i < borrowedBooks.size(); i++){
+					if(a.getName().compareToIgnoreCase(borrowedBooks.get(i).getTitle()) == 0){
+						books.add(a);
+						borrowedBooks.remove(i);
+						break;
+					}
+
+				}
+
+				break;
+
+			}
+
+
+
+		}
+
 
 	}
 
