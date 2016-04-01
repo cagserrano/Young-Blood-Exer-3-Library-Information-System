@@ -49,7 +49,7 @@ public void borrowBook(Library l){
 			System.out.println("Book found!");
 			ArrayList<Book> b = book.get(bookToBorrow);
 			for(i = 0; i < b.size(); i++){
-				System.out.println(i + 
+				System.out.println("[" + i + "]" + 
 					" Title: " + b.get(i).getTitle() + 
 					" Author: " + b.get(i).getAuthor() + 
 					" Year: " + b.get(i).getYear() +
