@@ -15,14 +15,20 @@ public class Main{
 			switch(choice){
 				case 1:
 					user.borrowBook(l.getBookMap());
+					break;
 				case 2:
 					user.returnBook(l.getBookMap());
+					break;
 				case 3:
 					l.viewLibraryBooks();
+					break;
 				case 4:
 					user.viewBooksBorrowed();
+					break;
 				case 5:
+					break;
 				default:
+					System.out.println("Invalid choice.");
 			}
 		}while(choice != 5);
 	}
