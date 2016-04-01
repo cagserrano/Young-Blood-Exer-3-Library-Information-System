@@ -1,12 +1,17 @@
 import java.util.Scanner;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.File;
 
 public class Main{
 	public static void main(String[] args){
 		int choice;
+
 		do{
 			choice = printMenu();
 			switch(choice){
 				case 1:
+					user.borrowBooks();
 				case 2:
 				case 3:
 				case 4:
@@ -25,5 +30,50 @@ public class Main{
 		System.out.println("[5] Exit");
 		choice = sc.nextInt();
 		return choice;
+	}
+	public static void register(){
+		String username, password;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("===Register===");
+		System.out.print("Username: ");
+		username = sc.nextLine();
+		System.out.print("Password: ");
+		password = sc.nextLine();
+		try{
+			File file = new File("accounts.csv");
+			BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+			writer.writeline(username+","+password);
+			writer.close();
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("Cannot write to \"accounts.csv\".");
+		}
+	}
+	public static void login(){
+		String username, password;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("===Login===");
+		System.out.println("Username: ");
+		username = sc.nextLine();
+		System.out.print("Password: ");
+		password = sc.nextLine();
+		
+		try{
+			String current = null;
+			BufferedReader br = new BufferedReader(new FileReader("accounts.csv"));
+			while((current = br.readLine()) != null){
+				String[] data = current.split(",");
+				if((data[0] == username) && (data[1] == password)){
+					//bookMap.put(data[0], new ArrayList<Book>());
+				}	
+				//bookMap.get(data[0]).add(b);
+			}			
+			br.close();
+			System.out.println("Successful Added!");
+		}catch(FileNotFoundException e){
+			System.out.println("File \"accounts.csv\" not found.");
+		}catch(IOException e){
+            System.out.println(e.toString());
+        }
 	}
 }
