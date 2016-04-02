@@ -11,6 +11,7 @@ public class Main{
 	public static void main(String[] args){
 		int choice;
 		String name, username, password;
+		System.out.println("\n===Library Information System===");
 		name=name();
 		username=username();
 		password=password();

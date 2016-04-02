@@ -86,11 +86,16 @@ public class User{
 				"	Year: " + borrowedBooks.get(i).getYear() +
 				"	ID: " + borrowedBooks.get(i).getId());
 			}
-			System.out.print("\n\t\tEnter choice: ");
-			i = sc.nextInt();	
-			Book a = borrowedBooks.get(i);
-			this.borrowedBooks.remove(i);
-			l.addBook(a);
+			try{
+				System.out.print("\n\t\tEnter choice: ");
+				i = sc.nextInt();	
+				Book a = borrowedBooks.get(i);
+				this.borrowedBooks.remove(i);
+				l.addBook(a);
+				System.out.println("\n\t\tDone!");
+			}catch(Exception e){
+				System.out.println("\n\t\tInvalid input.");				
+			}
 		}
 		else{
 			System.out.println("\n\t\tNo Borrowed Books.");
