@@ -7,10 +7,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-/*
+/**********************************************************************************************************
 	The program Library Information System simulates the borrowing of a book, returning of a book, view the
 books inside the library, and viewing the books the user has borrowed.
-*/
+***********************************************************************************************************/
 public class Main{
 	public static void main(String[] args){
 		int choice;
@@ -32,6 +32,9 @@ public class Main{
 		}while(choice != 3);
 	}
 	public static int mainMenu(){
+	/********************************************************************************************
+		This method prints the main menu and return user's choice.
+	********************************************************************************************/
 		int choice;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\n===Library Information System===");
@@ -43,6 +46,9 @@ public class Main{
 		return choice;	
 	}
 	public static int printMenu(){
+	/********************************************************************************************
+		This method prints the menu and return user's choice.
+	********************************************************************************************/
 		int choice;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\n\t\t=====MENU=====");
@@ -55,12 +61,12 @@ public class Main{
 		choice = sc.nextInt();
 		return choice;
 	}
-	
-	/*
-	Register: User can sign up to the library information system.
-	*/
 
 	public static void register(){
+	/*********************************************************************************
+	Register: User can sign up to the library information system.
+		This method saves the user's name, username and password to accounts.csv file.
+	**********************************************************************************/
 		String name,username, password;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\n\t===Register===");
@@ -83,6 +89,12 @@ public class Main{
 	}
 	
 	public static void login(){
+	/*****************************************************************************************************
+	Login: User can login to the library information system and access the borrowing, returning of a book.
+		This method will check the authentication of user's inputs of his/her username and password from 
+	the accounts.csv file. If authenticated then the user can now borrow or return a book, else the user
+	can not access these methods.
+	******************************************************************************************************/
 		int choice1;
 		Library l = new Library();
 		l.loadBooks();
