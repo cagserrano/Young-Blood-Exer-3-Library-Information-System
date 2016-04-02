@@ -7,6 +7,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+/*
+	The program Library Information System simulates the borrowing of a book, returning of a book, view the
+books inside the library, and viewing the books the user has borrowed.
+*/
 public class Main{
 	public static void main(String[] args){
 		int choice;
@@ -52,6 +56,10 @@ public class Main{
 		return choice;
 	}
 	
+	/*
+	Register: User can sign up to the library information system.
+	*/
+
 	public static void register(){
 		String name,username, password;
 		Scanner sc = new Scanner(System.in);
