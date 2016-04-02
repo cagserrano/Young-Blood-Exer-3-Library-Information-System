@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.BufferedWriter;
+import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,37 +10,33 @@ import java.io.IOException;
 public class Main{
 	public static void main(String[] args){
 		int choice;
-		String name, username, password;
-		System.out.println("\n===Library Information System===");
-		name=name();
-		username=username();
-		password=password();
-		User user=new User(name, username, password);
-		Library l = new Library();
-		l.loadBooks();
 		do{
-			choice = printMenu();
+			choice = mainMenu();
 			switch(choice){
 				case 1:
-					user.borrowBook(l);
+					register();
 					break;
 				case 2:
-					user.returnBook(l);
+					login();
 					break;
 				case 3:
-					l.viewLibraryBooks();
-					break;
-				case 4:
-					user.viewBooksBorrowed();
-					break;
-				case 5:
-					l.saveBooks();
-					System.out.println("Thank you!");
+					System.out.println("\n\tThank you!");
 					break;
 				default:
-					System.out.println("Invalid choice.");
+					System.out.println("\n\tInvalid choice.");
 			}
-		}while(choice != 5);
+		}while(choice != 3);
+	}
+	public static int mainMenu(){
+		int choice;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("\n===Library Information System===");
+		System.out.println("\t[1] Register");
+		System.out.println("\t[2] Login");
+		System.out.println("\t[3] Exit");
+		System.out.print("\tChoice: ");
+		choice = sc.nextInt();
+		return choice;	
 	}
 	public static int printMenu(){
 		int choice;
@@ -50,87 +46,84 @@ public class Main{
 		System.out.println("\t\t\t[2] Return a Book");
 		System.out.println("\t\t\t[3] View books in the library");
 		System.out.println("\t\t\t[4] View borrowed books");
-		System.out.println("\t\t\t[5] Exit");
+		System.out.println("\t\t\t[5] Logout");
 		System.out.print("\t\t\tChoice: ");
 		choice = sc.nextInt();
 		return choice;
 	}
 	
-	public static String name(){
-		String name;
+	public static void register(){
+		String name,username, password;
 		Scanner sc = new Scanner(System.in);
-		System.out.print("\n\tEnter Name: ");
-		name=sc.nextLine();
-		return name;
-	} 
-	
-	public static String username(){
-		String username;
-		Scanner sc = new Scanner(System.in);
-		System.out.print("\tEnter Username: ");
-		username=sc.nextLine();
-		return username;
-	
-	}
-	public static String password(){
-		String password;
-		Scanner sc = new Scanner(System.in);
-		System.out.print("\tEnter Password: ");
-		password=sc.nextLine();
-		return password;
-	}
-	
-	
-	
-	/*public static void register(){
-		String username, password;
-		Scanner sc = new Scanner(System.in);
-		System.out.println("===Register===");
-		System.out.print("Username: ");
+		System.out.println("\n\t===Register===");
+		System.out.print("\tName: ");
+		name = sc.nextLine();
+		System.out.print("\tUsername: ");
 		username = sc.nextLine();
-		System.out.print("Password: ");
+		System.out.print("\tPassword: ");
 		password = sc.nextLine();
 		try{
-			File file = new File("accounts.csv");
-			BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
-<<<<<<< HEAD
-			//writer.writeline(username+","+password);
-=======
-			writer.writeline(username + "," + password);
->>>>>>> c4ee57904956e7bbc11d494630be686a35d0a920
+			File file = new File("../bin/accounts.csv");
+			PrintWriter writer = new PrintWriter(new FileWriter(file, true));
+			writer.println(name + "," + username + "," + password);
 			writer.close();
+			System.out.println("\n\tSuccessful!");
 		}catch(Exception e){
 			e.printStackTrace();
-			System.out.println("Cannot write to \"accounts.csv\".");
+			System.out.println("\n\tCannot write to \"accounts.csv\".");
 		}
 	}
+	
 	public static void login(){
+		int choice1;
+		Library l = new Library();
+		l.loadBooks();
 		String username, password;
 		Scanner sc = new Scanner(System.in);
-		System.out.println("===Login===");
-		System.out.println("Username: ");
+		System.out.println("\n\t===Login===");
+		System.out.print("\tUsername: ");
 		username = sc.nextLine();
-		System.out.print("Password: ");
+		System.out.print("\tPassword: ");
 		password = sc.nextLine();
-		
 		try{
 			String current = null;
-			BufferedReader br = new BufferedReader(new FileReader("accounts.csv"));
+			BufferedReader br = new BufferedReader(new FileReader("../bin/accounts.csv"));
 			while((current = br.readLine()) != null){
 				String[] data = current.split(",");
-				if((data[0] == username) && (data[1] == password)){
-					//bookMap.put(data[0], new ArrayList<Book>());
-
-				}	
-				//bookMap.get(data[0]).add(b);
-			}			
+				if(username.equals(data[1]) && password.equals(data[2])){
+					User user = new User(data[0],data[1],data[2]);
+					System.out.println("\n\tHello! "+data[0]+".");
+					do{
+						choice1 = printMenu();
+						switch(choice1){
+							case 1:
+								user.borrowBook(l);
+								break;
+							case 2:
+								user.returnBook(l);
+								break;
+							case 3:
+								l.viewLibraryBooks();
+								break;
+							case 4:
+								user.viewBooksBorrowed();
+								break;
+							case 5:
+								l.saveBooks();
+								System.out.println("\n\tThank you!");
+								break;
+							default:
+								System.out.println("\n\tInvalid choice.");
+						}
+					}while(choice1 != 5);
+				}
+			}		
 			br.close();
-			System.out.println("Successful Added!");
 		}catch(FileNotFoundException e){
-			System.out.println("File \"accounts.csv\" not found.");
+			System.out.println("\tFile not found");
 		}catch(IOException e){
             System.out.println(e.toString());
         }
-	}*/
+	}
 }
 
