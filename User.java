@@ -107,22 +107,3 @@ public void borrowBook(Library l){
 
 	}
 }
-
-<<<<<<< HEAD
-	
-=======
-	/*public void saveBorrowedBooks(){
-
-
-
-
-	}
-
-
-	public void loadBorrowedBooks(){
-
-
-
-	}*/
->>>>>>> 6540679318741a427789b69bdec192e7991274a4
-
