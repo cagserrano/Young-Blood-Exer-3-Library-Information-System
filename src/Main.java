@@ -44,11 +44,13 @@ public class Main{
 	public static int printMenu(){
 		int choice;
 		Scanner sc = new Scanner(System.in);
-		System.out.println("[1] Borrow a Book");
-		System.out.println("[2] Return a Book");
-		System.out.println("[3] View books in the library");
-		System.out.println("[4] View borrowed books");
-		System.out.println("[5] Exit");
+		System.out.println("\n\t\t=====MENU=====");
+		System.out.println("\t\t\t[1] Borrow a Book");
+		System.out.println("\t\t\t[2] Return a Book");
+		System.out.println("\t\t\t[3] View books in the library");
+		System.out.println("\t\t\t[4] View borrowed books");
+		System.out.println("\t\t\t[5] Exit");
+		System.out.print("\t\t\tChoice: ");
 		choice = sc.nextInt();
 		return choice;
 	}
@@ -56,7 +58,7 @@ public class Main{
 	public static String name(){
 		String name;
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Enter Name: ");
+		System.out.print("\n\tEnter Name: ");
 		name=sc.nextLine();
 		return name;
 	} 
@@ -64,7 +66,7 @@ public class Main{
 	public static String username(){
 		String username;
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Enter Username: ");
+		System.out.print("\tEnter Username: ");
 		username=sc.nextLine();
 		return username;
 	
@@ -72,7 +74,7 @@ public class Main{
 	public static String password(){
 		String password;
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Enter Password: ");
+		System.out.print("\tEnter Password: ");
 		password=sc.nextLine();
 		return password;
 	}

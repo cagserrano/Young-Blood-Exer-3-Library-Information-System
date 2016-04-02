@@ -18,12 +18,12 @@ public class Library{
 	
 
 	public void loadBooks(){
-		System.out.println("Loading books from CSV file");
+		System.out.println("\n\tLoading books from CSV file");
 		try{
 			int iD=0, x;
 			String current = null;
 			Random r = new Random();
-			BufferedReader br = new BufferedReader(new FileReader("books.csv"));
+			BufferedReader br = new BufferedReader(new FileReader("../bin/books.csv"));
 			while((current = br.readLine()) != null){
 				String[] data = current.split(",");
 				x = r.nextInt(6) + 15;
@@ -38,9 +38,9 @@ public class Library{
 				}	
 			}			
 			br.close();
-			System.out.println("Books Added!");
+			System.out.println("\tBooks Added!");
 		}catch(FileNotFoundException e){
-			System.out.println("File not found");
+			System.out.println("\tFile not found");
 		}catch(IOException e){
             System.out.println(e.toString());
         }
@@ -48,7 +48,7 @@ public class Library{
 
 	public void saveBooks(){
 		try{	
-			PrintWriter pw = new PrintWriter(new FileWriter("books.csv"));	
+			PrintWriter pw = new PrintWriter(new FileWriter("../bin/books.csv"));	
 			Iterator bookIterator = bookMap.keySet().iterator();
 			while(bookIterator.hasNext() != false){
 				String current = bookIterator.next().toString();
@@ -62,7 +62,7 @@ public class Library{
 				}
 			}	
 			pw.close();
-			System.out.println("Done!");
+			System.out.println("\tDone!");
 		}catch(IOException e){
 			System.out.println(e.toString());
 		}
@@ -72,11 +72,12 @@ public class Library{
 	public void viewLibraryBooks(){
 		Iterator booksIterator = bookMap.keySet().iterator();
 		int number, i=1;
+		System.out.println("\n\t\t===Books in the Library===\n");
 		while(booksIterator.hasNext()){	
 			String current = booksIterator.next().toString();
 			number = bookMap.get(current).size();
-			System.out.println("[" + i + "] " + "Title: " + current);
-			System.out.println("Quantity: " + number + "\n");			
+			System.out.println("\t\t[" + i + "] " + "Title: " + current);
+			System.out.println("\t\t    Quantity: " + number + "\n");			
 			i += 1; 
 		}
 	}
